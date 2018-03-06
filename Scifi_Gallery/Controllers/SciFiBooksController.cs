@@ -17,10 +17,26 @@ namespace Scifi_Gallery.Controllers
   // it will show the return. 
   public class SciFiBooksController : Controller 
   {
-    // This is 
-    public string Detail()
+    // This is an action Method (I think because it is in a controller class)
+    //public string Detail()
+    //{
+    //  return " Hello from SciFiBooks Controller "; 
+    //}
+
+
+    public ActionResult Detail()
     {
-      return " Hello from SciFiBooks Controller "; 
+      if (DateTime.Today.DayOfWeek == DayOfWeek.Tuesday)
+      {
+        // Both redirect result and content result share the same base class. 
+        return new RedirectResult("/"); 
+      }
+
+      return new ContentResult()
+      {
+        // This works the same as the one above that's abeen commmetd out.
+        Content = "Hello from the SciFiBooks Controller using content result"
+      };
     }
 
   }
